@@ -1,10 +1,11 @@
 import MainPage from "./components/_pages/MainPage/MainPage";
+import TransactionPage from './components/_pages/TransactionPage/TransactionPage'
 
 const App = () => {
   return (
     <>
-      <h1>App</h1>
-      <MainPage />
+      {/* <MainPage /> */}
+      <TransactionPage/>
     </>
   );
 };
