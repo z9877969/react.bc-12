@@ -1,0 +1,28 @@
+{
+  "costsInfoOptions": [
+    {
+      "period": "Сегодня",
+      "sum": "0.00"
+    },
+    {
+      "period": "Неделя",
+      "sum": "0.00"
+    },
+    {
+      "period": "Месяц",
+      "sum": "0.00"
+    }
+  ],
+  "incomesInfoOptions": [
+    {
+      "period": "Месяц",
+      "sum": "0.00"
+    }
+  ],
+  "balanceInfoOptions": [
+    {
+      "period": "allTime",
+      "sum": "0.00"
+    }
+  ]
+}
