@@ -6,17 +6,33 @@ import {
   balanceInfoOptions,
 } from "../../../assets/options/mainInfoOptions.json";
 
-const MainPage = () => {
+const MainPage = ({ openActivePage }) => {
   return (
-    <>
+    <section style={{ width: "400px", margin: "0 auto" }}>
       <h1>Журнал расходов</h1>
-      {/* {MainInfo({ title: "JS", a: [], b: {}, c: true })} */}
-      {/* <MainInfo title="Расходы" aJ={[]} bJ={{}} cJ={true} /> */}
-      <MainInfo btnTitle="Add" options={costsInfoOptions} title="Расходы" />
-      <MainInfo options={incomesInfoOptions} title="Доходы" />
-      <MainInfo btnTitle="Show" options={balanceInfoOptions} title="Баланс" />
+      <MainInfo
+        openActivePage={openActivePage}
+        btnTitle="Add"
+        options={costsInfoOptions}
+        title="Расходы"
+        activePage="costs"
+      />
+      <MainInfo
+        openActivePage={openActivePage}
+        btnTitle="Add"
+        options={incomesInfoOptions}
+        title="Доходы"
+        activePage="incomes"
+      />
+      <MainInfo
+        btnTitle="Show"
+        options={balanceInfoOptions}
+        title="Баланс"
+        openActivePage={openActivePage}
+        activePage="balance"
+      />
       <OpenHistoryBtns />
-    </>
+    </section>
   );
 };
 
