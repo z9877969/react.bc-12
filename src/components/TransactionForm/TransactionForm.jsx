@@ -26,6 +26,7 @@ export default class TransactionForm extends Component {
 
   render() {
     console.log(this.props);
+    const { openCategoriesList } = this.props;
     return (
       <Form onSubmit={this.handleSubmit}>
         <button type="submit">OK</button>
@@ -46,6 +47,7 @@ export default class TransactionForm extends Component {
           handleChange={this.handleChange}
           title="Категория"
           type="button"
+          handleClick={openCategoriesList}
         />
         <LabelInput
           name="sum"
