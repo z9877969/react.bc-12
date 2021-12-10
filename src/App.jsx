@@ -6,11 +6,20 @@ class App extends Component {
   state = {
     activePage: "main", // costs || incomes
     data: [],
+    categories: [],
   };
 
   openActivePage = (activePage = "main") => {
     // costs || incomes || main
     this.setState({ activePage });
+  };
+
+  addCategory = (category) => {
+    this.setState((prevState) => {
+      return {
+        categories: [...prevState.categories, category],
+      };
+    });
   };
 
   addData = (dataForm) => {
@@ -20,7 +29,7 @@ class App extends Component {
   };
 
   render() {
-    const { activePage } = this.state;
+    const { activePage, categories } = this.state;
     return (
       <>
         {activePage === "main" && (
@@ -31,6 +40,8 @@ class App extends Component {
             addData={this.addData}
             closeTransactionPage={this.openActivePage}
             transType={"costs"}
+            categories={categories}
+            addCategory={this.addCategory}
           />
         )}
         {activePage === "incomes" && (
@@ -38,6 +49,8 @@ class App extends Component {
             addData={this.addData}
             closeTransactionPage={this.openActivePage}
             transType={"incomes"}
+            categories={categories}
+            addCategory={this.addCategory}
           />
         )}
         {activePage === "balance" && <h1>Balance</h1>}
