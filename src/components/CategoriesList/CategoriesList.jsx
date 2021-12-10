@@ -26,7 +26,7 @@ export default class CategoriesList extends Component {
     const { categories } = this.props;
     return (
       <>
-        <h1>CategoriesList</h1>;
+        <h1>CategoriesList</h1>
         {categories.map(({ id, title }) => {
           console.log(id, checkedValue);
           return (

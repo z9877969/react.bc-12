@@ -3,70 +3,62 @@ import LabelInput from "../_shared/labelInput/labelInput";
 import { Form } from "./TransactionForm.style.js";
 
 export default class TransactionForm extends Component {
-  state = {
-    date: "",
-    time: "",
-    category: "",
-    sum: "",
-    currency: "",
-    comment: "",
-  };
-
-  handleChange = (e) => {
-    const { name, value } = e.target;
-    this.setState({ [name]: value });
-  };
-
   handleSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
-
-    this.props.addData(this.state);
+    const { dataForm, addData, transType } = this.props;
+    addData({ dataForm, transType });
   };
 
   render() {
-    console.log(this.props);
-    const { openCategoriesList } = this.props;
+    const { openCategoriesList, handleChange, dataForm } = this.props;
+    const { date, time, category, sum, currency, comment } = dataForm;
+
     return (
       <Form onSubmit={this.handleSubmit}>
         <button type="submit">OK</button>
         <LabelInput
           name="date"
-          handleChange={this.handleChange}
+          handleChange={handleChange}
           title="День"
           type="date"
+          value={date}
         />
         <LabelInput
           name="time"
-          handleChange={this.handleChange}
+          handleChange={handleChange}
           title="Время"
           type="time"
+          value={time}
         />
         <LabelInput
           name="category"
-          handleChange={this.handleChange}
+          handleChange={handleChange}
           title="Категория"
           type="button"
           handleClick={openCategoriesList}
+          value={category.title}
         />
         <LabelInput
           name="sum"
-          handleChange={this.handleChange}
+          handleChange={handleChange}
           title="Сумма"
           type="text"
           placeholder="Введите сумму"
+          value={sum}
         />
         <LabelInput
           name="currency"
-          handleChange={this.handleChange}
+          handleChange={handleChange}
           title="Валюта"
           type="button"
+          value={currency}
         />
         <LabelInput
           name="comment"
-          handleChange={this.handleChange}
+          handleChange={handleChange}
           type="text"
           placeholder="Коментарий"
+          value={comment}
         />
       </Form>
     );

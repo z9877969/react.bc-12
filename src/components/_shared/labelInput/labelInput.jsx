@@ -5,6 +5,7 @@ export default function LabelInput({
   placeholder = null,
   handleChange,
   handleClick,
+  value,
 }) {
   return (
     <label className="label">
@@ -13,6 +14,7 @@ export default function LabelInput({
         className="input"
         type={type}
         name={name}
+        value={value}
         placeholder={placeholder}
         onChange={handleChange}
         onClick={handleClick}
