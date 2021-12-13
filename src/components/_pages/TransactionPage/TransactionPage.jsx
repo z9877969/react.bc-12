@@ -34,6 +34,7 @@ class TransactionPage extends Component {
       addData,
       transType,
       categories,
+      setError,
     } = this.props;
     const { isOpenCategories, ...dataForm } = this.state;
     const formTitle =
@@ -54,6 +55,7 @@ class TransactionPage extends Component {
             openCategoriesList={this.openCategoriesList}
             dataForm={dataForm}
             transType={transType}
+            setError={setError}
           />
         ) : (
           <CategoriesList categories={categories} addCategory={addCategory} />

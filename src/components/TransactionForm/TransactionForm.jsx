@@ -1,12 +1,15 @@
 import { Component } from "react";
 import LabelInput from "../_shared/labelInput/labelInput";
 import { Form } from "./TransactionForm.style.js";
+import { postTransaction } from "../../utils/api";
 
 export default class TransactionForm extends Component {
   handleSubmit = (e) => {
     e.preventDefault();
-    const { dataForm, addData, transType } = this.props;
-    addData({ dataForm, transType });
+    const { dataForm, addData, transType, setError } = this.props;
+    postTransaction(transType, dataForm)
+      .then((transaction) => addData({ dataForm: transaction, transType }))
+      .catch((error) => setError(error));
   };
 
   render() {
