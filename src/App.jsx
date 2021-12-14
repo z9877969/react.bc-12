@@ -61,8 +61,7 @@ const App = () => {
   // }
 
   useEffect(() => {
-    console.log("useEffect");
-    const getTransactions = async () => {
+    const setTransactions = async () => {
       try {
         const costs = await getTransactions("costs");
         const incomes = await getTransactions("incomes");
@@ -72,7 +71,7 @@ const App = () => {
         setError(error.message);
       }
     };
-    getTransactions();
+    setTransactions();
   }, []);
 
   // componentDidUpdate(prevProps, prevState) {
@@ -82,12 +81,12 @@ const App = () => {
   //     setError(null);
   //   }
   // }
-  // useEffect(() => {
-  //   if (error) {
-  //     alert(error);
-  //     setError(null);
-  //   }
-  // }, [error]);
+  useEffect(() => {
+    if (error) {
+      alert(error);
+      setError(null);
+    }
+  }, [error]);
 
   return (
     <>
