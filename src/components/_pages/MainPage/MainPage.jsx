@@ -5,20 +5,23 @@ import {
   incomesInfoOptions,
   balanceInfoOptions,
 } from "../../../assets/options/mainInfoOptions.json";
+import { useMainContext } from "../../../context/MainProvider";
 
-const MainPage = ({ openActivePage }) => {
+const MainPage = () => {
+  const { toggleActivePage } = useMainContext();
+
   return (
     <section style={{ width: "400px", margin: "0 auto" }}>
       <h1>Журнал расходов</h1>
       <MainInfo
-        openActivePage={openActivePage}
+        openActivePage={toggleActivePage}
         btnTitle="Add"
         options={costsInfoOptions}
         title="Расходы"
         activePage="costs"
       />
       <MainInfo
-        openActivePage={openActivePage}
+        openActivePage={toggleActivePage}
         btnTitle="Add"
         options={incomesInfoOptions}
         title="Доходы"
@@ -28,7 +31,7 @@ const MainPage = ({ openActivePage }) => {
         btnTitle="Show"
         options={balanceInfoOptions}
         title="Баланс"
-        openActivePage={openActivePage}
+        openActivePage={toggleActivePage}
         activePage="balance"
       />
       <OpenHistoryBtns />

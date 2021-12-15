@@ -28,7 +28,6 @@ export default class CategoriesList extends Component {
       <>
         <h1>CategoriesList</h1>
         {categories.map(({ id, title }) => {
-          console.log(id, checkedValue);
           return (
             <label>
               <p> {title}</p>
