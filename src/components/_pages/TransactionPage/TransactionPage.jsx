@@ -1,83 +1,58 @@
-import { Component } from "react";
+import { useState } from "react";
 import GoBackHeader from "../../_shared/goBackHeader/goBackHeader";
 import TransactionForm from "../../TransactionForm/TransactionForm";
 import CategoriesList from "../../CategoriesList/CategoriesList";
+import { useMainContext } from "../../../context/MainProvider";
+import LanguageProvider from "../../../context/LanguageProvider";
 
-class TransactionPage extends Component {
-  state = {
-    isOpenCategories: false,
+const TransactionPage = ({ transType }) => {
+  const { toggleActivePage, addCategory, categories } = useMainContext();
+
+  const [isOpenCategories, setIsOpenCategories] = useState(false);
+  const [dataForm, setDataForm] = useState({
     date: "2021-12-10",
     time: "14:53",
-    category: this.props.categories[0],
+    category: categories[0],
     sum: "",
     currency: "EUR",
     comment: "",
-  };
+  });
 
-  handleChange = (e) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
-    this.setState({ [name]: value });
+    setDataForm((prev) => ({ ...prev, [name]: value }));
   };
 
-  closeCategoriesList = () => {
-    this.setState({ isOpenCategories: false });
-  };
+  const closeCategoriesList = () => setIsOpenCategories(false);
 
-  openCategoriesList = () => {
-    this.setState({ isOpenCategories: true });
-  };
+  const openCategoriesList = () => setIsOpenCategories(true);
 
-  render() {
-    const {
-      addCategory,
-      closeTransactionPage,
-      addData,
-      transType,
-      categories,
-      setError,
-    } = this.props;
-    const { isOpenCategories, ...dataForm } = this.state;
-    const formTitle =
-      !isOpenCategories && (transType === "costs" ? "Расходы" : "Доходы");
-    return (
-      <section style={{ width: "400px", margin: "0 auto" }}>
-        <GoBackHeader
-          title={isOpenCategories ? "Категории" : formTitle}
-          handleGoBack={
-            isOpenCategories ? this.closeCategoriesList : closeTransactionPage
-          }
-        />
+  const formTitle =
+    !isOpenCategories && (transType === "costs" ? "Расходы" : "Доходы");
 
-        {!isOpenCategories ? (
+  console.log("transactionPage");
+
+  return (
+    <section style={{ width: "400px", margin: "0 auto" }}>
+      <GoBackHeader
+        title={isOpenCategories ? "Категории" : formTitle}
+        handleGoBack={isOpenCategories ? closeCategoriesList : toggleActivePage}
+      />
+
+      {!isOpenCategories ? (
+        <LanguageProvider>
           <TransactionForm
-            handleChange={this.handleChange}
-            addData={addData}
-            openCategoriesList={this.openCategoriesList}
+            handleChange={handleChange}
+            openCategoriesList={openCategoriesList}
             dataForm={dataForm}
             transType={transType}
-            setError={setError}
           />
-        ) : (
-          <CategoriesList categories={categories} addCategory={addCategory} />
-        )}
-      </section>
-    );
-  }
-}
+        </LanguageProvider>
+      ) : (
+        <CategoriesList categories={categories} addCategory={addCategory} />
+      )}
+    </section>
+  );
+};
 
 export default TransactionPage;
-
-// export default function TransactionPage({ closeTransactionPage, addData }) {
-//   const isOpenCategories = false;
-//   return (
-//     <section style={{ width: "400px", margin: "0 auto" }}>
-//       <GoBackHeader handleGoBack={closeTransactionPage} />
-
-//       {!isOpenCategories ? (
-//         <TransactionForm addData={addData} />
-//       ) : (
-//         <CategoriesList />
-//       )}
-//     </section>
-//   );
-// }

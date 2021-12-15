@@ -1,79 +1,81 @@
-import { Component } from "react";
+import { Component, useState } from "react";
 import LabelInput from "../_shared/labelInput/labelInput";
 import { Form } from "./TransactionForm.style.js";
 import { postTransaction } from "../../utils/api";
+import { useMainContext } from "../../context/MainProvider";
+import { useLanguageContext } from "../../context/LanguageProvider";
 
-export default class TransactionForm extends Component {
-  handleSubmit = (e) => {
+const TransactionForm = ({
+  openCategoriesList,
+  handleChange,
+  dataForm,
+  transType,
+}) => {
+  const { addTransaction, setError } = useMainContext();
+  const { dataFormOptions } = useLanguageContext();
+
+  const [lang, useLang] = useState("en");
+
+  const handleSubmit = (e) => {
     e.preventDefault();
-    const { dataForm, addData, transType, setError } = this.props;
     postTransaction(transType, dataForm)
-      .then((transaction) => addData({ dataForm: transaction, transType }))
+      .then((transaction) =>
+        addTransaction({ dataForm: transaction, transType })
+      )
       .catch((error) => setError(error));
   };
 
-  render() {
-    const { openCategoriesList, handleChange, dataForm } = this.props;
-    const { date, time, category, sum, currency, comment } = dataForm;
+  const { date, time, category, sum, currency, comment } = dataForm;
 
-    return (
-      <Form onSubmit={this.handleSubmit}>
-        <button type="submit">OK</button>
-        <LabelInput
-          name="date"
-          handleChange={handleChange}
-          title="День"
-          type="date"
-          value={date}
-        />
-        <LabelInput
-          name="time"
-          handleChange={handleChange}
-          title="Время"
-          type="time"
-          value={time}
-        />
-        <LabelInput
-          name="category"
-          handleChange={handleChange}
-          title="Категория"
-          type="button"
-          handleClick={openCategoriesList}
-          value={category.title}
-        />
-        <LabelInput
-          name="sum"
-          handleChange={handleChange}
-          title="Сумма"
-          type="text"
-          placeholder="Введите сумму"
-          value={sum}
-        />
-        <LabelInput
-          name="currency"
-          handleChange={handleChange}
-          title="Валюта"
-          type="button"
-          value={currency}
-        />
-        <LabelInput
-          name="comment"
-          handleChange={handleChange}
-          type="text"
-          placeholder="Коментарий"
-          value={comment}
-        />
-      </Form>
-    );
-  }
-}
+  return (
+    <Form onSubmit={handleSubmit}>
+      <button type="submit">OK</button>
+      <LabelInput
+        name="date"
+        handleChange={handleChange}
+        title={dataFormOptions.date[lang]}
+        type="date"
+        value={date}
+      />
+      <LabelInput
+        name="time"
+        handleChange={handleChange}
+        title={dataFormOptions.time[lang]}
+        type="time"
+        value={time}
+      />
+      <LabelInput
+        name="category"
+        handleChange={handleChange}
+        title={dataFormOptions.category[lang]}
+        type="button"
+        handleClick={openCategoriesList}
+        value={category.title}
+      />
+      <LabelInput
+        name="sum"
+        handleChange={handleChange}
+        title={dataFormOptions.sum[lang]}
+        type="text"
+        placeholder="Введите сумму"
+        value={sum}
+      />
+      <LabelInput
+        name="currency"
+        handleChange={handleChange}
+        title={dataFormOptions.currency[lang]}
+        type="button"
+        value={currency}
+      />
+      <LabelInput
+        name="comment"
+        handleChange={handleChange}
+        type="text"
+        placeholder="Коментарий"
+        value={comment}
+      />
+    </Form>
+  );
+};
 
-// const obj = {
-//   a: "654",
-// };
-
-// obj.a; // "654"
-// obj["a"]; // "654"
-
-// const key = "a";
-// obj[key]; // "654"
+export default TransactionForm;
