@@ -1,11 +1,14 @@
 import { useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 import GoBackHeader from "../../_shared/goBackHeader/goBackHeader";
 import TransactionForm from "../../TransactionForm/TransactionForm";
 import CategoriesList from "../../CategoriesList/CategoriesList";
 import { useMainContext } from "../../../context/MainProvider";
 import LanguageProvider from "../../../context/LanguageProvider";
 
-const TransactionPage = ({ transType }) => {
+const TransactionPage = () => {
+  const history = useHistory();
+  const { transType } = useParams();
   const { toggleActivePage, addCategory, categories } = useMainContext();
 
   const [isOpenCategories, setIsOpenCategories] = useState(false);
@@ -18,6 +21,7 @@ const TransactionPage = ({ transType }) => {
     comment: "",
   });
 
+  const handleGoBack = () => history.push("/");
   const handleChange = (e) => {
     const { name, value } = e.target;
     setDataForm((prev) => ({ ...prev, [name]: value }));
@@ -36,7 +40,7 @@ const TransactionPage = ({ transType }) => {
     <section style={{ width: "400px", margin: "0 auto" }}>
       <GoBackHeader
         title={isOpenCategories ? "Категории" : formTitle}
-        handleGoBack={isOpenCategories ? closeCategoriesList : toggleActivePage}
+        handleGoBack={isOpenCategories ? closeCategoriesList : handleGoBack}
       />
 
       {!isOpenCategories ? (
