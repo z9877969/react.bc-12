@@ -98,5 +98,19 @@
       "comment": "get money",
       "id": 2
     }
+  ],
+  "delivery": [
+    {
+      "id": "pl",
+      "price": 320
+    },
+    {
+      "id": "ua",
+      "price": 400
+    },
+    {
+      "id": "uk",
+      "price": 100
+    }
   ]
 }
