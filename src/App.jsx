@@ -12,3 +12,12 @@ const App = () => {
 };
 
 export default App;
+
+{
+  /* <>
+  {activePage === "main" && <MainPage />}
+  {activePage === "costs" && <TransactionPage transType={"costs"} />}
+  {activePage === "incomes" && <TransactionPage transType={"incomes"} />}
+  {activePage === "balance" && <h1>Balance</h1>}
+</>; */
+}
