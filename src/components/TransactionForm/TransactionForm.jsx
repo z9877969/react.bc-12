@@ -4,12 +4,19 @@ import { Form } from "./TransactionForm.style.js";
 import { postTransaction } from "../../utils/api";
 import { useMainContext } from "../../context/MainProvider";
 import { useLanguageContext } from "../../context/LanguageProvider";
+import { connect } from "react-redux";
+import {
+  addCosts,
+  addIncomes,
+} from "../../redux/transactions/transactionsActions";
 
 const TransactionForm = ({
   openCategoriesList,
   handleChange,
   dataForm,
   transType,
+  addCosts,
+  addIncomes,
 }) => {
   const { addTransaction, setError } = useMainContext();
   const { dataFormOptions } = useLanguageContext();
@@ -19,9 +26,11 @@ const TransactionForm = ({
   const handleSubmit = (e) => {
     e.preventDefault();
     postTransaction(transType, dataForm)
-      .then((transaction) =>
-        addTransaction({ dataForm: transaction, transType })
-      )
+      .then((transaction) => {
+        // addTransaction({ dataForm: transaction, transType })
+        transType === "costs" && addCosts(transaction);
+        transType === "incomes" && addIncomes(transaction);
+      })
       .catch((error) => setError(error));
   };
 
@@ -78,4 +87,13 @@ const TransactionForm = ({
   );
 };
 
-export default TransactionForm;
+const mapStateToProps = (state) => {
+  return { aProp: state.a, bProp: state.b, costs: state.transactions.costs };
+};
+
+const mapDispatchToProps = {
+  addCosts,
+  addIncomes,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(TransactionForm);
