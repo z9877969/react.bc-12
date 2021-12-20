@@ -7,7 +7,7 @@ const MainContext = createContext();
 export const useMainContext = () => useContext(MainContext);
 
 const MainProvider = ({ children }) => {
-  const [activePage, setActivePage] = useState("main");
+  // const [activePage, setActivePage] = useState("main");
   const [costs, setCosts] = useState([]);
   const [incomes, setIncomes] = useState([]);
   //   const [categories, setCategories] = useState([
@@ -20,9 +20,9 @@ const MainProvider = ({ children }) => {
 
   const [error, setError] = useState(null);
 
-  const toggleActivePage = (activePage = "main") => {
-    setActivePage(activePage);
-  };
+  // const toggleActivePage = (activePage = "main") => {
+  //   setActivePage(activePage);
+  // };
 
   const addTransaction = ({ dataForm, transType }) => {
     transType === "costs" && setCosts((prevCosts) => [...prevCosts, dataForm]);
@@ -51,12 +51,12 @@ const MainProvider = ({ children }) => {
   return (
     <MainContext.Provider
       value={{
-        activePage,
+        // activePage,
         costs,
         incomes,
         categories,
         error,
-        toggleActivePage,
+        // toggleActivePage,
         addTransaction,
         addCategory,
         setError,
