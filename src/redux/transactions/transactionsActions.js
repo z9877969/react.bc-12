@@ -17,4 +17,8 @@ const addCosts = createAction("transactions/addCosts");
 // };
 const addIncomes = createAction("transactions/addIncomes");
 
-export { addCosts, addIncomes };
+const getCosts = createAction("transactions/getCosts");
+const getIncomes = createAction("transactions/getIncomes");
+const removeCosts = createAction("transactions/removeCosts");
+
+export { addCosts, addIncomes, getCosts, getIncomes, removeCosts };

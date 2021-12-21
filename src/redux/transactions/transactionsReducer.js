@@ -1,6 +1,12 @@
 // import { combineReducers } from "redux";
 import { createReducer, combineReducers } from "@reduxjs/toolkit";
-import { addCosts, addIncomes } from "./transactionsActions";
+import {
+  addCosts,
+  addIncomes,
+  getCosts,
+  getIncomes,
+  removeCosts,
+} from "./transactionsActions";
 // const costsReducer = (state = [], action) => {
 //   switch (action.type) {
 //     case "transactions/addCosts":
@@ -10,7 +16,10 @@ import { addCosts, addIncomes } from "./transactionsActions";
 //   }
 // };
 const costsReducer = createReducer([], {
-  [addCosts]: (state, action) => [...state, action.payload],
+  [addCosts]: (state, { payload }) => [...state, payload],
+  [getCosts]: (_, { payload }) => payload,
+  [removeCosts]: (state, { payload }) =>
+    state.filter((item) => item.id !== payload),
 });
 
 // const incomesReducer = (state = [], action) => {
@@ -22,7 +31,8 @@ const costsReducer = createReducer([], {
 //   }
 // };
 const incomesReducer = createReducer([], {
-  [addIncomes]: (state, action) => [...state, action.payload],
+  [addIncomes]: (state, { payload }) => [...state, payload],
+  [getIncomes]: (_, { payload }) => payload,
 });
 
 const transactionsReducer = combineReducers({
