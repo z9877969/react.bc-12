@@ -24,11 +24,11 @@ const MainProvider = ({ children }) => {
   //   setActivePage(activePage);
   // };
 
-  const addTransaction = ({ dataForm, transType }) => {
-    transType === "costs" && setCosts((prevCosts) => [...prevCosts, dataForm]);
-    transType === "incomes" &&
-      setIncomes((prevIncomes) => [...prevIncomes, dataForm]);
-  };
+  // const addTransaction = ({ dataForm, transType }) => {
+  //   transType === "costs" && setCosts((prevCosts) => [...prevCosts, dataForm]);
+  //   transType === "incomes" &&
+  //     setIncomes((prevIncomes) => [...prevIncomes, dataForm]);
+  // };
 
   const addCategory = (category) => {
     setCategories((prevCategories) => [...prevCategories, category]);
@@ -57,7 +57,7 @@ const MainProvider = ({ children }) => {
         categories,
         error,
         // toggleActivePage,
-        addTransaction,
+        // addTransaction,
         addCategory,
         setError,
       }}

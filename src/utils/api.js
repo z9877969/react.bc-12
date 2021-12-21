@@ -20,4 +20,14 @@ const getTransactions = async (endPoint) => {
   }
 };
 
-export { postTransaction, getTransactions };
+const removeTransaction = async (endPoint, id) => {
+  try {
+    const { data } = await axios.delete(endPoint + "/" + id);
+    console.log(data);
+    return id;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export { postTransaction, getTransactions, removeTransaction };
