@@ -1,30 +1,23 @@
-import { useSelector, useDispatch } from "react-redux";
-import { removeCosts } from "../../../redux/transactions/transactionsActions";
-import { removeTransaction } from "../../../utils/api";
+import { useSelector } from "react-redux";
+import TransactionsList from "../../TransactionsList/TransactionsList";
 
 const BalancePage = () => {
   const costs = useSelector((state) => state.transactions.costs);
-  const dispatch = useDispatch();
+  const incomes = useSelector((state) => state.transactions.incomes);
 
   return (
-    <ul>
-      {costs.map(({ date, sum, id }) => (
-        <li key={id}>
-          <span>Date:{date}</span>
-          <span>Sum:{sum}</span>
-          <button
-            type="button"
-            onClick={() => {
-              removeTransaction("costs", id).then((id) =>
-                dispatch(removeCosts(id))
-              );
-            }}
-          >
-            Delete
-          </button>
-        </li>
-      ))}
-    </ul>
+    <>
+      <TransactionsList
+        transactions={costs}
+        title={"Расходы"}
+        transType={"costs"}
+      />
+      <TransactionsList
+        transactions={incomes}
+        title={"Доходы"}
+        transType={"incomes"}
+      />
+    </>
   );
 };
 
