@@ -1,13 +1,13 @@
 {
   "costs": [
     {
-      "date": "2021-12-10",
+      "date": "2021-12-23",
       "time": "14:53",
       "category": {
         "id": "diff",
         "title": "Разное"
       },
-      "sum": "",
+      "sum": "500",
       "currency": "EUR",
       "comment": "",
       "id": 3
@@ -59,6 +59,18 @@
       "currency": "EUR",
       "comment": "buy car",
       "id": 7
+    },
+    {
+      "date": "2021-12-22",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "600",
+      "currency": "EUR",
+      "comment": "addNew",
+      "id": 8
     }
   ],
   "incomes": [

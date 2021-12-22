@@ -43,9 +43,14 @@ const App = () => {
         <MainPage />
       </Route>
 
+      <Route path={"/transaction/:transType/:transId"}>
+        <TransactionPage />
+      </Route>
+
       <Route path={"/transaction/:transType"}>
         <TransactionPage />
       </Route>
+
       <Route path={"/balance"}>
         <BalancePage />
       </Route>

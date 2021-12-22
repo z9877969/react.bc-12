@@ -29,5 +29,19 @@ const removeTransaction = async (endPoint, id) => {
     throw error;
   }
 };
+const updateTransaction = async (endPoint, id, updatingData) => {
+  try {
+    const { data } = await axios.put(endPoint + "/" + id, updatingData);
+    console.log(data);
+    return data;
+  } catch (error) {
+    throw error;
+  }
+};
 
-export { postTransaction, getTransactions, removeTransaction };
+export {
+  postTransaction,
+  getTransactions,
+  removeTransaction,
+  updateTransaction,
+};

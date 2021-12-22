@@ -6,6 +6,8 @@ import {
   getCosts,
   getIncomes,
   removeCosts,
+  editCosts,
+  editIncomes,
 } from "./transactionsActions";
 // const costsReducer = (state = [], action) => {
 //   switch (action.type) {
@@ -20,6 +22,8 @@ const costsReducer = createReducer([], {
   [getCosts]: (_, { payload }) => payload,
   [removeCosts]: (state, { payload }) =>
     state.filter((item) => item.id !== payload),
+  [editCosts]: (state, { payload }) =>
+    state.map((item) => (item.id === payload.id ? payload : item)),
 });
 
 // const incomesReducer = (state = [], action) => {
@@ -33,6 +37,8 @@ const costsReducer = createReducer([], {
 const incomesReducer = createReducer([], {
   [addIncomes]: (state, { payload }) => [...state, payload],
   [getIncomes]: (_, { payload }) => payload,
+  [editIncomes]: (state, { payload }) =>
+    state.map((item) => (item.id === payload.id ? payload : item)),
 });
 
 const transactionsReducer = combineReducers({

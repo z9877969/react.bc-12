@@ -1,37 +1,53 @@
 import { Component, useState } from "react";
 import LabelInput from "../_shared/labelInput/labelInput";
 import { Form } from "./TransactionForm.style.js";
-import { postTransaction } from "../../utils/api";
+import { postTransaction, updateTransaction } from "../../utils/api";
 import { useMainContext } from "../../context/MainProvider";
 import { useLanguageContext } from "../../context/LanguageProvider";
-import { connect } from "react-redux";
+import { connect, useDispatch } from "react-redux";
 import {
   addCosts,
   addIncomes,
+  editCosts,
+  editIncomes,
 } from "../../redux/transactions/transactionsActions";
 
 const TransactionForm = ({
   openCategoriesList,
   handleChange,
-  dataForm,
+  dataForm = {},
   transType,
   addCosts,
   addIncomes,
+  handleGoBack,
+  transId,
 }) => {
   const { addTransaction, setError } = useMainContext();
   const { dataFormOptions } = useLanguageContext();
+  const dispatch = useDispatch();
 
   const [lang, useLang] = useState("en");
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    postTransaction(transType, dataForm)
-      .then((transaction) => {
-        // addTransaction({ dataForm: transaction, transType })
-        transType === "costs" && addCosts(transaction);
-        transType === "incomes" && addIncomes(transaction);
-      })
-      .catch((error) => setError(error));
+
+    if (!transId) {
+      postTransaction(transType, dataForm)
+        .then((transaction) => {
+          // addTransaction({ dataForm: transaction, transType })
+          transType === "costs" && addCosts(transaction);
+          transType === "incomes" && addIncomes(transaction);
+        })
+        .catch((error) => setError(error));
+    } else {
+      updateTransaction(transType, transId, dataForm)
+        .then((updatedTransaction) => {
+          transType === "costs" && dispatch(editCosts(updatedTransaction));
+          transType === "incomes" && dispatch(editIncomes(updatedTransaction));
+          handleGoBack();
+        })
+        .catch((error) => setError(error));
+    }
   };
 
   const { date, time, category, sum, currency, comment } = dataForm;
@@ -59,7 +75,7 @@ const TransactionForm = ({
         title={dataFormOptions.category[lang]}
         type="button"
         handleClick={openCategoriesList}
-        value={category.title}
+        value={category?.title}
       />
       <LabelInput
         name="sum"
