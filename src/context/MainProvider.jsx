@@ -34,20 +34,6 @@ const MainProvider = ({ children }) => {
     setCategories((prevCategories) => [...prevCategories, category]);
   };
 
-  useEffect(() => {
-    const setTransactions = async () => {
-      try {
-        const costs = await getTransactions("costs");
-        const incomes = await getTransactions("incomes");
-        setCosts(costs);
-        setIncomes(incomes);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-    setTransactions();
-  }, []);
-
   return (
     <MainContext.Provider
       value={{
