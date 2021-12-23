@@ -8,35 +8,26 @@ import {
   removeCosts,
   editCosts,
   editIncomes,
+  getCostsSuccess,
+  getCostsError,
+  getCostsRequest,
+  getIncomesRequest,
+  getIncomesSuccess,
+  getIncomesError,
 } from "./transactionsActions";
-// const costsReducer = (state = [], action) => {
-//   switch (action.type) {
-//     case "transactions/addCosts":
-//       return [...state, action.payload];
-//     default:
-//       return state;
-//   }
-// };
+
 const costsReducer = createReducer([], {
+  [getCostsSuccess]: (_, { payload }) => payload,
   [addCosts]: (state, { payload }) => [...state, payload],
-  [getCosts]: (_, { payload }) => payload,
   [removeCosts]: (state, { payload }) =>
     state.filter((item) => item.id !== payload),
   [editCosts]: (state, { payload }) =>
     state.map((item) => (item.id === payload.id ? payload : item)),
 });
 
-// const incomesReducer = (state = [], action) => {
-//   switch (action.type) {
-//     case "transactions/addIncomes":
-//       return [...state, action.payload];
-//     default:
-//       return state;
-//   }
-// };
 const incomesReducer = createReducer([], {
+  [getIncomesSuccess]: (_, { payload }) => payload,
   [addIncomes]: (state, { payload }) => [...state, payload],
-  [getIncomes]: (_, { payload }) => payload,
   [editIncomes]: (state, { payload }) =>
     state.map((item) => (item.id === payload.id ? payload : item)),
 });

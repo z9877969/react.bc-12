@@ -23,6 +23,14 @@ const removeCosts = createAction("transactions/removeCosts");
 const editCosts = createAction("transactions/editCosts");
 const editIncomes = createAction("transactions/editIncomes");
 
+export const getCostsRequest = createAction("transactions/getCostsRequest");
+export const getCostsSuccess = createAction("transactions/getCostsSuccess");
+export const getCostsError = createAction("transactions/getCostsError");
+
+export const getIncomesRequest = createAction("transactions/getIncomesRequest");
+export const getIncomesSuccess = createAction("transactions/getIncomesSuccess");
+export const getIncomesError = createAction("transactions/getIncomesError");
+
 export {
   addCosts,
   addIncomes,

@@ -6,7 +6,11 @@ import TransactionPage from "./components/_pages/TransactionPage/TransactionPage
 import BalancePage from "./components/_pages/BalancePage/BalancePage";
 import { useMainContext } from "./context/MainProvider";
 import { getTransactions } from "./utils/api";
-import { getCosts, getIncomes } from "./redux/transactions/transactionsActions";
+// import { getCosts, getIncomes } from "./redux/transactions/transactionsActions";
+import {
+  getCosts,
+  getIncomes,
+} from "./redux/transactions/transactionOperations";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -21,21 +25,9 @@ const App = () => {
   }, [error]);
 
   useEffect(() => {
-    const setTransactions = async () => {
-      try {
-        const costs = await getTransactions("costs");
-        const incomes = await getTransactions("incomes");
-        dispatch(getCosts(costs));
-        dispatch(getIncomes(incomes));
-        // setCosts(costs);
-        // setIncomes(incomes);
-      } catch (error) {
-        setError(error.message);
-      }
-    };
-
-    setTransactions();
-  }, []);
+    dispatch(getCosts());
+    dispatch(getIncomes());
+  }, [dispatch]);
 
   return (
     <Switch>
