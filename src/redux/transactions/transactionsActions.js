@@ -31,6 +31,10 @@ export const getIncomesRequest = createAction("transactions/getIncomesRequest");
 export const getIncomesSuccess = createAction("transactions/getIncomesSuccess");
 export const getIncomesError = createAction("transactions/getIncomesError");
 
+export const addCostsRequest = createAction("transactions/addCostsRequest");
+export const addCostsSuccess = createAction("transactions/addCostsSuccess");
+export const addCostsError = createAction("transactions/addCostsError");
+
 export {
   addCosts,
   addIncomes,

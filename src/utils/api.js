@@ -5,8 +5,10 @@ axios.defaults.baseURL = "http://localhost:3004/";
 const postTransaction = async (endPoint, transaction) => {
   try {
     const { data } = await axios.post(endPoint, transaction);
+    console.log(data);
     return data;
   } catch (error) {
+    console.log(error);
     throw error;
   }
 };

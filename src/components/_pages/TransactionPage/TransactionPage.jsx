@@ -13,6 +13,7 @@ const TransactionPage = () => {
   const { toggleActivePage, addCategory, categories } = useMainContext();
 
   const transactions = useSelector((state) => state.transactions);
+  const error = useSelector((state) => state.transactions.error);
   const curTransaction = transactions[transType].find(
     (data) => data.id === Number(transId)
   );
@@ -50,6 +51,12 @@ const TransactionPage = () => {
   useEffect(() => {
     curTransaction && setDataForm(curTransaction);
   }, [curTransaction]);
+
+  useEffect(() => {
+    if (error) {
+      alert(error.message);
+    }
+  }, [error]);
 
   return (
     <section style={{ width: "400px", margin: "0 auto" }}>
