@@ -71,6 +71,222 @@
       "currency": "EUR",
       "comment": "addNew",
       "id": 8
+    },
+    {
+      "date": "2021-12-24",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "300",
+      "currency": "EUR",
+      "comment": "",
+      "id": 9
+    },
+    {
+      "date": "2021-12-24",
+      "time": "14:54",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "400",
+      "currency": "EUR",
+      "comment": "",
+      "id": 10
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 11
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 12
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 13
+    },
+    {
+      "date": "2021-12-24",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 14
+    },
+    {
+      "date": "2021-12-17",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 15
+    },
+    {
+      "date": "2021-12-23",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 16
+    },
+    {
+      "date": "2021-12-23",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 17
+    },
+    {
+      "date": "2021-12-31",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 18
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 19
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 20
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 21
+    },
+    {
+      "date": "2021-12-28",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 22
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 23
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 24
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 25
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 26
     }
   ],
   "incomes": [
@@ -133,6 +349,150 @@
       "currency": "EUR",
       "comment": "",
       "id": 5
+    },
+    {
+      "date": "2021-12-23",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 6
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 7
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 8
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 9
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 10
+    },
+    {
+      "date": "2021-12-24",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "600",
+      "currency": "EUR",
+      "comment": "",
+      "id": 11
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 12
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 13
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 14
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 15
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 16
+    },
+    {
+      "date": "2021-12-10",
+      "time": "14:53",
+      "category": {
+        "id": "diff",
+        "title": "Разное"
+      },
+      "sum": "",
+      "currency": "EUR",
+      "comment": "",
+      "id": 17
     }
   ]
 }

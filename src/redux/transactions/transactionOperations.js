@@ -1,17 +1,4 @@
-// const requestOperation = () => {
-//   const callback = (dispatch) => {
-//     dispatch({ type: "getCostsRequest" });
-
-//     fetch("http://localhost:3004/costs")
-//       .then((res) => res.json())
-//       .then((costs) => dispatch({ type: "getCostsSuccess", payload: costs }))
-//       .catch((err) =>
-//         dispatch({ type: "getCostsError", payload: err.message })
-//       );
-//   };
-
-//   return callback;
-// };
+import { createAsyncThunk } from "@reduxjs/toolkit";
 
 import {
   getCostsRequest,
@@ -20,9 +7,12 @@ import {
   getIncomesRequest,
   getIncomesError,
   getIncomesSuccess,
+  addCostsRequest,
+  addCostsSuccess,
+  addCostsError,
 } from "./transactionsActions";
 
-import { getTransactions } from "../../utils/api";
+import { getTransactions, postTransaction } from "../../utils/api";
 
 const getCosts = () => (dispatch) => {
   dispatch(getCostsRequest());
@@ -38,4 +28,33 @@ const getIncomes = () => (dispatch) => {
     .catch((err) => dispatch(getIncomesError(err.message)));
 };
 
-export { getCosts, getIncomes };
+const addCosts = (transaction) => (dispatch) => {
+  dispatch(addCostsRequest());
+  postTransaction("costs", transaction)
+    .then((costs) => {
+      dispatch(addCostsSuccess(costs));
+    })
+    .catch((err) => dispatch(addCostsError(err.message)));
+};
+
+const addIncomes = createAsyncThunk(
+  "transactions/addIncomes",
+  async (transaction, thunkAPI) => {
+    try {
+      const response = await postTransaction("incomes", {
+        ...transaction,
+        id: 10,
+      });
+      // console.log(response);
+      return response;
+    } catch (error) {
+      // console.log(error.request);
+      return thunkAPI.rejectWithValue({
+        message: error.message,
+        status: error.request.status,
+      });
+    }
+  }
+);
+
+export { getCosts, getIncomes, addCosts, addIncomes };

@@ -6,19 +6,21 @@ import { useMainContext } from "../../context/MainProvider";
 import { useLanguageContext } from "../../context/LanguageProvider";
 import { connect, useDispatch } from "react-redux";
 import {
-  addCosts,
-  addIncomes,
   editCosts,
   editIncomes,
 } from "../../redux/transactions/transactionsActions";
+import {
+  addCosts,
+  addIncomes,
+} from "../../redux/transactions/transactionOperations";
 
 const TransactionForm = ({
   openCategoriesList,
   handleChange,
   dataForm = {},
   transType,
-  addCosts,
-  addIncomes,
+  // addCosts,
+  // addIncomes,
   handleGoBack,
   transId,
 }) => {
@@ -32,13 +34,8 @@ const TransactionForm = ({
     e.preventDefault();
 
     if (!transId) {
-      postTransaction(transType, dataForm)
-        .then((transaction) => {
-          // addTransaction({ dataForm: transaction, transType })
-          transType === "costs" && addCosts(transaction);
-          transType === "incomes" && addIncomes(transaction);
-        })
-        .catch((error) => setError(error));
+      transType === "costs" && dispatch(addCosts(dataForm));
+      transType === "incomes" && dispatch(addIncomes(dataForm));
     } else {
       updateTransaction(transType, transId, dataForm)
         .then((updatedTransaction) => {
@@ -108,7 +105,6 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-  addCosts,
   addIncomes,
 };
 
